@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM python:3.9.9-alpine
+FROM python:3.10-alpine
 WORKDIR /code
 ENV HOST=mysql
 ENV FLASK_APP=jogoteca.py

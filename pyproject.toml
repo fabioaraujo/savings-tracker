@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "savings-tracker"
+version = "0.1.0"
+description = ""
+authors = ["Fabio Araujo <fabioaraujods@gmail.com>"]
+readme = "README.md"
+packages = [{include = "savings_tracker"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

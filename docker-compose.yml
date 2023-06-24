@@ -10,7 +10,7 @@ services:
       - mysql
   ### Mysql container
   mysql:
-    container_name: mysql-server
+    container_name: mysql-server-2
     image: mysql:latest
     ports:
       - "3306:3306"
