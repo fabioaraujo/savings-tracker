@@ -2,7 +2,7 @@ version: "1"
 services:
   ### Flask container
   web:
-    container_name: flask-dream-tracker
+    container_name: flask-savings-tracker
     build: .
     ports:
       - "8000:5000"
@@ -10,7 +10,7 @@ services:
       - mysql
   ### Mysql container
   mysql:
-    container_name: mysql-server-2
+    container_name: mysql-savings-tracker
     image: mysql:latest
     ports:
       - "3306:3306"
