@@ -1,0 +1,19 @@
+version: "1"
+services:
+  ### Flask container
+  web:
+    container_name: flask-dream-tracker
+    build: .
+    ports:
+      - "8000:5000"
+    depends_on:
+      - mysql
+  ### Mysql container
+  mysql:
+    container_name: mysql-server
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rute
+      MYSQL_ROOT_HOST: '%'  # needs to be enclosed with quotes, permite acesso de qualquer host com o usuário root
