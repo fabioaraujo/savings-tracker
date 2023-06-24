@@ -9,6 +9,7 @@ packages = [{include = "savings_tracker"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 Flask = "^2.3.2"
+Flask-SQLAlchemy = "^3.0.3"
 mysql-connector-python = "^8.0.33"
 python-dotenv = "^1.0.0"
 

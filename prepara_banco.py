@@ -34,7 +34,7 @@ TABLES[
       `valor_inicial` double NOT NULL,
       `valor_final` double NOT NULL,
       `data_inicial` datetime NOT NULL,
-      `data_fim` datetime NOT NULL,
+      `data_final` datetime NOT NULL,
       PRIMARY KEY (`id`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;"""
 

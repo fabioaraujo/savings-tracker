@@ -1,19 +1,16 @@
 from flask import Flask
-import flask
-from models import Sonho
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv  # noqa: F401
+
+load_dotenv()
 
 app = Flask(__name__)
 
+app.config.from_pyfile("config.py")
 
-@app.route("/")
-def index():
-    sonhos = [
-        Sonho("primeiro"),
-        Sonho("segundo"),
-        Sonho("terceiro"),
-    ]
-    return flask.render_template("sonhos.html", titulo="Sonhos", sonhos=sonhos)
+db = SQLAlchemy(app)
 
+from views import *  # noqa: E402 F401 F403 # import das rotas após configuração do app
 
 if __name__ == "__main__":
     app.run(debug=True)

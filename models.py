@@ -1,6 +1,13 @@
-class Sonho:
-    def __init__(self, nome: str):
-        self.id = 1
-        self.nome = nome
-        self.data_final = "31/12/2029"
-        self.valor_final = "1234,56"
+from app import db
+
+
+class Sonho(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.String(50), nullable=False)
+    data_inicial = db.Column(db.DateTime, nullable=False)
+    data_final = db.Column(db.DateTime, nullable=False)
+    valor_inicial = db.Column(db.Double, nullable=False)
+    valor_final = db.Column(db.Double, nullable=False)
+
+    def __repr__(self):
+        return "<Name %r>" % self.nome
