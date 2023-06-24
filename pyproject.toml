@@ -10,6 +10,8 @@ packages = [{include = "savings_tracker"}]
 python = "^3.10"
 Flask = "^2.3.2"
 
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.3.3"
 
 [build-system]
 requires = ["poetry-core"]
