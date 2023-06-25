@@ -44,15 +44,8 @@ def criar():
     return flask.redirect(flask.url_for("index"))
 
 
-@app.route("/acompanhamento/<int:id>", methods=["GET"])
-def acompanhamento(id):
-    return flask.render_template(
-        "novo_acompanhamento.html", titulo="Adicionar acompanhamento", sonho_id=id
-    )
-
-
-@app.route("/acompanhamentos", methods=["POST"])
-def acompanhamentos():
+@app.route("/acompanhamento", methods=["POST"])
+def acompanhamento():
     sonho_id = request.form["sonho_id"]
     valor = request.form["valor"]
     data = request.form["data"]
@@ -64,4 +57,18 @@ def acompanhamentos():
     db.session.add(acompanhamento)
     db.session.commit()
 
-    return flask.redirect(flask.url_for("index"))
+    return flask.redirect(flask.url_for("sonho_detalhes", id=sonho_id))
+
+
+@app.route("/sonho_detalhes/<int:id>", methods=["GET"])
+def sonho_detalhes(id):
+    sonho = Sonho.query.filter_by(id=id).first()
+    acompanhamentos = SonhoAcompanhamento.query.filter_by(sonho_id=id).order_by(
+        SonhoAcompanhamento.data.desc()
+    )
+    return flask.render_template(
+        "sonho_detalhes.html",
+        titulo="Sonho Acompanhamento",
+        sonho=sonho,
+        acompanhamentos=acompanhamentos,
+    )
