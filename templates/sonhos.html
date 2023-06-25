@@ -15,6 +15,7 @@
                     <td>{{ sonho.nome }}</td>
                     <td>{{ sonho.data_final }}</td>
                     <td>{{ sonho.valor_final }}</td>
+                    <td><a href="{{ url_for('acompanhamento', id=sonho.id) }}">Novo Acompanhamento</a></td>
                 </tr>
                 {% endfor %}
 

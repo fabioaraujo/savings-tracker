@@ -11,3 +11,13 @@ class Sonho(db.Model):
 
     def __repr__(self):
         return "<Name %r>" % self.nome
+
+
+class SonhoAcompanhamento(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    sonho_id = db.Column(db.Integer)
+    data = db.Column(db.DateTime, nullable=False)
+    valor = db.Column(db.Double, nullable=False)
+
+    def __repr__(self):
+        return "<Name %r>" % self.nome

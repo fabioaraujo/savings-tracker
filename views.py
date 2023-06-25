@@ -1,7 +1,7 @@
 from flask import request
 import flask
 from app import app, db
-from models import Sonho
+from models import Sonho, SonhoAcompanhamento
 
 
 @app.route("/")
@@ -40,5 +40,28 @@ def criar():
         )
         db.session.add(novo_sonho)
         db.session.commit()
+
+    return flask.redirect(flask.url_for("index"))
+
+
+@app.route("/acompanhamento/<int:id>", methods=["GET"])
+def acompanhamento(id):
+    return flask.render_template(
+        "novo_acompanhamento.html", titulo="Adicionar acompanhamento", sonho_id=id
+    )
+
+
+@app.route("/acompanhamentos", methods=["POST"])
+def acompanhamentos():
+    sonho_id = request.form["sonho_id"]
+    valor = request.form["valor"]
+    data = request.form["data"]
+    acompanhamento = SonhoAcompanhamento(
+        sonho_id=sonho_id,
+        valor=valor,
+        data=data,
+    )
+    db.session.add(acompanhamento)
+    db.session.commit()
 
     return flask.redirect(flask.url_for("index"))

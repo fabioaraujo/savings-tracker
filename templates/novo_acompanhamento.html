@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form action="{{ url_for('acompanhamentos') }}"  method="post">
+        <input type="hidden" name="sonho_id" value="{{ sonho_id }}" />
+        <fieldset>
+          <div class="form-group">
+            <label>valor</label>
+            <input type="text" name="valor" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>data</label>
+            <input type="text" name="data" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+        </fieldset>
+      </form>
+{% endblock %}
