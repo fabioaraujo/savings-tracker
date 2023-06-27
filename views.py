@@ -72,3 +72,16 @@ def sonho_detalhes(id):
         sonho=sonho,
         acompanhamentos=acompanhamentos,
     )
+
+
+@app.route("/sonho_detalhes_json/<int:id>", methods=["GET"])
+def sonho_detalhes_json(id):
+    acompanhamentos = SonhoAcompanhamento.query.filter_by(sonho_id=id).order_by(
+        SonhoAcompanhamento.data
+    )
+
+    line = [["data", "valor"]]
+    for ac in acompanhamentos:
+        line.append([str(ac.data)[:10], ac.valor])
+
+    return line
