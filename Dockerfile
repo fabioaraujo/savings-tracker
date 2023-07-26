@@ -1,5 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM python:3.10-alpine
+RUN mkdir -p /workspaces
 WORKDIR /code
 ENV HOST=mysql
 ENV FLASK_APP=app.py
